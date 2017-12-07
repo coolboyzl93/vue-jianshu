@@ -1,0 +1,65 @@
+$total: 24;
+@function column-width ($col) {
+  @return percentage($col / $total)
+}
+
+$breakpoints: ( small: 480px, medium: 700px, large: 1024px);
+// @mixin也是一个函数，可以有参数
+// @mixin 需要@include 调用 不会合并代码 %aaa 会被 @extend调用，会合并代码，也就是两个相同引用%aaa css代码块的CSS选择器会以逗号分割
+// 而@mixin 不会做这样的处理，因此多次引用@mixin会导致大量重复的CSS代码。
+// @mixin 和 %aaa 都需要使用&这个变量引用CSS选择器自身
+@mixin fit-content {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: -o-fit-content;
+  width: -ms-fit-content;
+  width: fit-content;
+}
+%col {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: left;
+}
+@for $i from 1 through $total {
+  // 让某一个类(动态命名)的宽度是这个函数返回的结果
+  .col-lg-#{$i} {
+    @include fit-content;
+    @extend %col;
+    width: column-width($i);
+  };
+  .col-md-#{$i} {
+    @extend %col;
+    width: column-width($i);
+  };
+  .col-sm-#{$i} {
+    @extend %col;
+    width: column-width($i);
+  };
+  .col-xs-#{$i} {
+    @extend %col;
+    width: column-width($i);
+  };
+}
+
+// PC端
+@media (min-width: 992px) {
+  .container {
+    width: 960px;
+  }
+}
+
+// 平板端
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+// 手机端
+@media (max-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}

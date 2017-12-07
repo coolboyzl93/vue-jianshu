@@ -1,0 +1,364 @@
+  // 始终按照 位置=> 自身形状 => 自身样式 => 自身其它功能(如清除浮动) 
+  // => 子元素位置 => 子元素样式 => 子元素功能
+  .navbar-jianshu {
+    position: fixed;
+    top: 0;
+    z-index: 1030;
+    width: 100%;
+    border-bottom: 1px solid #dddddd;
+    background: #fff;
+    .limit-width {
+      // 居中
+      margin: 0 auto;
+      min-width: 768px;
+      max-width: 1440px; // height: inherit;
+      .nav-center {
+        margin: 0 auto; // 暂时定值
+        width: 945px;
+      }
+    }
+  }
+
+  // logo
+  .navbar-logo {
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 56px;
+    img {
+      position: absolute;
+      left: 23px;
+      top: 15px;
+    }
+  }
+
+  // 中间导航选项
+  .navbar-nav {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    &>li {
+      position: relative;
+      display: block;
+      float: left;
+      margin-right: 10px;
+      line-height: 20px;
+      &>a {
+        text-align: center;
+        line-height: 30px;
+        padding: 13px;
+        &:hover {
+          background: #eee;
+        }
+      }
+      .active {
+        color: #ea6f5a;
+      }
+    } // 搜索input
+    .nav-search {
+      // position: relative;
+      padding-left: 15px;
+      margin-right: 10px;
+      form {
+        position: relative;
+        padding: 9px;
+      }
+      .search-input {
+        width: 240px;
+        padding: 0 40px 0 20px;
+        height: 38px;
+        border-radius: 40px;
+        background: #eee;
+        font-size: 14px;
+        transition: all .4s linear;
+        &:focus {
+          width: 400px;
+        }
+      }
+      .search-btn {
+        border-radius: 50%;
+
+
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+      }
+      .reverse {
+        background: #969696;
+        i{
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  // 右侧三个独立右浮动元素
+  .btn-write,
+  .user,
+  .style-mode-btn {
+    float: right;
+    cursor: pointer;
+  }
+
+  // 写文章按钮
+  .btn-write {
+    width: 100px;
+    height: 40px;
+    margin: 8px 15px 0;
+    line-height: 40px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #ea6f5a;
+    vertical-align: middle
+  }
+
+  // 用户头像
+  .user {
+    position: relative;
+    height: 100%;
+    &:hover {
+      background: #eee;
+    }
+    .avatar {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      margin: 8px 28px 8px 20px;
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+    i {
+      position: absolute;
+      right: 10px;
+      top: 20px;
+    }
+  }
+
+  // 调整字体和主题
+  .style-mode-btn {
+    line-height: 20px;
+    padding: 17px 10px 17px 15px;
+    font-size: 17px;
+    color: #969696;
+  }
+
+  // 搜索推荐框
+  .navbar-search-tips {
+    position: absolute;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+    margin-top: 1px;
+    width: 250px;
+    left: 0;
+    top: 100%; // visibility: hidden;
+    // opacity: 0;
+    border-radius: 4px; // 顶部小角
+    &:before {
+      content: "";
+      left: 27px;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      background-color: #fff;
+      box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+      transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      top: -5px;
+      z-index: -1;
+    } // 搜索框推荐
+    .search-trending {
+      padding: 20px 20px 10px;
+      border-bottom: 1px solid #f0f0f0;
+      .search-trending-header {
+        height: 20px;
+        margin-bottom: 10px;
+        &>span {
+          float: left;
+          font-size: 14px;
+          color: #969696;
+        }
+        &>a {
+          float: right;
+          font-size: 13px;
+          color: #969696;
+          background-color: transparent;
+          border-width: 0;
+          padding: 0;
+        }
+        i {
+          display: inline-block;
+          line-height: 1;
+          transition: .5s ease;
+        }
+      } // 搜索框推荐列表
+      .search-trending-tags-wrap {
+        font-size: 0;
+        text-align: left;
+        padding-left: 0;
+        li {
+          margin-right: 10px;
+          display: inline-block;
+          line-height: 28px;
+          a {
+            line-height: normal;
+            padding: 2px 6px;
+            font-size: 12px;
+            color: #787878;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+          }
+        }
+      }
+    } // 最近搜索
+    .search-recent {
+      padding: 5px;
+      li {
+        a {
+          display: block;
+          height: 40px;
+          line-height: 20px;
+          padding: 10px 15px;
+          font-size: 14px;
+          color: #333;
+          position: relative;
+          .icon-search-history {
+            float: left;
+            margin-right: 10px;
+            font-size: 18px;
+            color: #787878;
+          }
+          span {
+            // vertical-align: middle;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+            padding-right: 30px;
+          }
+          .unfollow {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: #a0a0a0; // display: none;
+          }
+        }
+      }
+    }
+  }
+
+  // 字体主题面板设置框
+  .mode-panel {
+    position: absolute;
+    top: 56px;
+    left: 1318px; // 响应式设计待修改
+    z-index: 1;
+    padding: 20px 20px 20px 24px;
+    margin-left: -80px;
+    min-width: 235px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, .1));
+    -webkit-filter: drop-shadow(0 0 8px rgba(0, 0, 0, .1));
+    &:before {
+      position: absolute;
+      top: -10px;
+      left: 78%;
+      content: "";
+      display: none;
+      border: 9px solid transparent;
+      border-top: none;
+      background: black;
+    } 
+    // 消除inline-block的间隙font-size:0
+    .switch {
+      font-size: 0;
+      letter-spacing: -4px;
+    }
+
+    hr {
+      margin: 20px -20px;
+      border-color: #f0f0f0;
+    }
+    // 切换开关默认设计
+    .switch-btn {
+      width: 49%;
+      text-align: center;
+      font-size: 14px;
+      letter-spacing: 0!important;
+      color: #969696;
+      border: 1px solid #e5e5e5;
+      vertical-align: middle;
+      display: inline-block;
+      cursor: pointer;
+      &:first-child {
+        padding: 10px 13px 10px 17px;
+        border-radius: 20px 0 0 20px;
+        border-right: none;
+      }
+      &:last-child {
+        padding: 10px 17px 10px 13px;
+        border-radius: 0 20px 20px 0;
+        border-left: none;
+      }
+    }
+    .active {
+      background: #6DACF4;
+      color: #fff;
+    }
+    .nightmode {
+      padding-left: 4px;
+      margin-right: 16px;
+      font-size: 14px;
+      color: #969696;
+      line-height: 40px;
+      vertical-align: middle;
+      display: inline-block;
+      i {
+        position: relative;
+        top: 2px;
+        margin-right: 5px;
+        font-size: 17px;
+      }
+      span {
+        vertical-align: middle
+      }
+    }
+    .is-night {
+      width: auto;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    .font-family {
+      margin-bottom: 10px;
+      .font-song {
+        font-family: Georgia,
+        Times New Roman,
+        Times,
+        Songti SC,
+        serif;
+      }
+      .font-hei {
+        font-family: -apple-system,
+        SF UI Text,
+        Arial,
+        PingFang SC,
+        Hiragino Sans GB,
+        Microsoft YaHei,
+        WenQuanYi Micro Hei,
+        sans-serif;
+      }
+    }
+  }
